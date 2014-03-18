@@ -1,0 +1,264 @@
+<html id="document"><head>
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic|Lora:400,700,400italic,700italic">
+    <!--<link href='css/fonts.css' rel='stylesheet' type='text/css'/>-->
+    <link href="jslib/codemirror-3.20/lib/codemirror.css" rel="stylesheet">
+    <link href="jslib/vex/vex.css" rel="stylesheet">
+    <link href="css/vex-theme-gorilla.css" rel="stylesheet">
+    <link href="css/codemirror-hint.css" rel="stylesheet">
+    <link href="css/worksheet.css" rel="stylesheet">
+
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG-full.js&amp;delayStartupUntil=configured" type="text/javascript"></script>
+    <script src="jslib/markdown/Markdown.Converter.js" type="text/javascript"></script>
+    <script src="jslib/markdown/Markdown.Sanitizer.js" type="text/javascript"></script>
+    <script src="jslib/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="jslib/underscore/underscore.min.js" type="text/javascript"></script>
+    <script src="jslib/knockoutjs/knockout-3.0.0.min.js" type="text/javascript"></script>
+    <script src="jslib/codemirror-3.20/lib/codemirror.js" type="text/javascript"></script>
+    <script src="jslib/codemirror-3.20/addon/edit/closebrackets.js" type="text/javascript"></script>
+    <script src="jslib/codemirror-3.20/addon/edit/matchbrackets.js" type="text/javascript"></script>
+    <script src="jslib/codemirror-3.20/addon/runmode/runmode.js" type="text/javascript"></script>
+    <script src="jslib/codemirror-3.20/addon/runmode/colorize.js" type="text/javascript"></script>
+    <script src="jslib/codemirror-3.20/addon/hint/show-hint.js" type="text/javascript"></script>
+    <script src="jslib/codemirror-3.20/mode/clojure/clojure.js" type="text/javascript"></script>
+    <script src="jslib/codemirror-3.20/mode/markdown/markdown.js" type="text/javascript"></script>
+    <script src="jslib/codemirror-3.20/mode/xml/xml.js" type="text/javascript"></script>
+    <script src="jslib/d3/d3.v3.min.js" type="text/javascript"></script>
+    <script src="jslib/d3/d3.geo.projection.min.js" type="text/javascript"></script>
+    <script src="jslib/vega/vega.1.3.3.min.js" type="text/javascript"></script>
+    <script src="jslib/uuid/uuid.core.js" type="text/javascript"></script>
+    <script src="jslib/mousetrap/mousetrap.min.js" type="text/javascript"></script>
+    <script src="jslib/jsedn/jsedn.js" type="text/javascript"></script>
+    <script src="jslib/vex/vex.combined.min.js" type="text/javascript"></script>
+    <script src="js/eventbus.js" type="text/javascript"></script>
+    <script src="js/commandProcessor.js" type="text/javascript"></script>
+    <script src="js/repl.js" type="text/javascript"></script>
+    <script src="js/clojureUtils.js" type="text/javascript"></script>
+    <script src="js/worksheetParser.js" type="text/javascript"></script>
+    <script src="js/evaluator.js" type="text/javascript"></script>
+    <script src="js/codemirrorVM.js" type="text/javascript"></script>
+    <script src="js/completions.js" type="text/javascript"></script>
+    <script src="js/mathJaxViewer.js" type="text/javascript"></script>
+    <script src="js/outputViewer.js" type="text/javascript"></script>
+    <script src="js/vegaViewer.js" type="text/javascript"></script>
+    <script src="js/htmlViewer.js" type="text/javascript"></script>
+    <script src="js/segment.js" type="text/javascript"></script>
+    <script src="js/worksheet.js" type="text/javascript"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+
+    <title data-bind="text: title">Gorilla REPL : test worksheet</title>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: pointer}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MathJax_SVG_Display {text-align: center; margin: 1em 0em; position: relative; display: block; width: 100%}
+#MathJax_SVG_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax_SVG {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; border: 0; padding: 0; margin: 0}
+.MathJax_SVG * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.mjx-svg-href {fill: blue; stroke: blue}
+.MathJax_SVG_Processing {visibility: hidden; position: absolute; top: 0; left: 0; width: 0; height: 0; overflow: hidden; display: block}
+.MathJax_SVG_Processed {display: none!important}
+.MathJax_SVG_ExBox {display: block; overflow: hidden; width: 1px; height: 60ex}
+.MathJax_SVG .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body class=""><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px none; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_SVG_Hidden"></div><svg><defs id="MathJax_SVG_glyphs"/></svg></div><div id="MathJax_Message" style="display: none;"></div>
+
+<!-- The page stub -->
+<div data-bind="visible: (status() !== ''), html: status" class="status" style="display: none;"></div>
+<div class="commands">?
+    <div class="command-contents">
+        <!--<h2>Commands</h2>-->
+        <ul data-bind="foreach: commandList.filter(function (x) {return x.showInMenu})">
+            <li>
+                <div data-bind="text: desc" class="command">Evaluate the highlighted segment.</div>
+                <div data-bind="text: kb" class="command-shortcut">shift+enter</div>
+            </li>
+        
+            <li>
+                <div data-bind="text: desc" class="command">Show possible auto-completions.</div>
+                <div data-bind="text: kb" class="command-shortcut">ctrl+space,ctrl+g ctrl+a</div>
+            </li>
+        
+            <li>
+                <div data-bind="text: desc" class="command">Delete the highlighted segment.</div>
+                <div data-bind="text: kb" class="command-shortcut">ctrl+g ctrl+x</div>
+            </li>
+        
+            <li>
+                <div data-bind="text: desc" class="command">Create a new segment below the highlighted segment.</div>
+                <div data-bind="text: kb" class="command-shortcut">ctrl+g ctrl+n</div>
+            </li>
+        
+            <li>
+                <div data-bind="text: desc" class="command">Convert the highlighted segment to a markdown segment.</div>
+                <div data-bind="text: kb" class="command-shortcut">ctrl+g ctrl+m</div>
+            </li>
+        
+            <li>
+                <div data-bind="text: desc" class="command">Convert the highlighted segment to a clojure segment.</div>
+                <div data-bind="text: kb" class="command-shortcut">ctrl+g ctrl+j</div>
+            </li>
+        
+            <li>
+                <div data-bind="text: desc" class="command">Load a worksheet.</div>
+                <div data-bind="text: kb" class="command-shortcut">ctrl+g ctrl+l</div>
+            </li>
+        
+            <li>
+                <div data-bind="text: desc" class="command">Save the worksheet.</div>
+                <div data-bind="text: kb" class="command-shortcut">ctrl+g ctrl+s</div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="contents">
+    <div class="segment container-segment">
+        <div class="container-children">
+        <div data-bind="template: {name: 'segment-template', foreach: worksheet().segments()}">
+    <div data-bind="template: {name: renderTemplate}">
+    <div data-bind="css: {selected: active()}, attr: {id: id}, click: handleClick" class="segment free selected" id="bc930111-6a8d-4ce2-8604-5c19e2ec7a38">
+        <div class="segment-main">
+            <div data-bind="mathJaxViewer: renderedContent, visible: !markupVisible()" class="free-preview" id="mathjax-viewer-87ce33b8-37e7-4a4e-a227-90b50d46e316" style="display: none;"><h1>My Worksheet</h1>
+
+<p>This is me using the gorrilla repl.</p></div>
+            <div data-bind="visible: markupVisible" class="free-markup" style="">
+                <textarea data-bind="codemirror: content" style="display: none;"></textarea><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3px; left: 10.3px;"><textarea style="position: absolute; padding: 0px; width: 1px; height: 1em; outline: medium none; font-size: 4px;" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 0px; min-height: 12px; pointer-events: none;"><div style="height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 12px; pointer-events: none;"><div style="width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 45.8px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: medium none;"><div class="CodeMirror-measure"><div style="width: 50px; height: 50px; overflow-x: scroll;"></div></div><div style="position: relative; z-index: 1; display: none;"><div class="CodeMirror-selected" style="position: absolute; left: 41.7833px; top: 0px; width: 67.95px; height: 13px;"></div></div><div class="CodeMirror-code" style=""><pre><span class="cm-header cm-header1"># My Worksheet</span></pre><pre>&nbsp;</pre><pre>This is me using the gorrilla repl.</pre></div><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 13px;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; top: 45.8px;"></div><div class="CodeMirror-gutters" style="display: none; height: 46px;"></div></div></div>
+            </div>
+        </div>
+        <div class="segment-footer"></div>
+    </div>
+</div>
+
+    <div data-bind="template: {name: renderTemplate}">
+    <div data-bind="css: {selected: active()}, attr: {id: id}, click: handleClick" class="segment free" id="8b429f19-d58a-42f8-8d67-0960b5f0cfb3">
+        <div class="segment-main">
+            <div data-bind="mathJaxViewer: renderedContent, visible: !markupVisible()" class="free-preview" id="mathjax-viewer-f566bf9d-4dab-4208-8fa9-f73c3fd2112c" style=""><h2>Factorial</h2>
+
+<p>Here I have defined the factorial function</p></div>
+            <div data-bind="visible: markupVisible" class="free-markup" style="display: none;">
+                <textarea data-bind="codemirror: content" style="display: none;"></textarea><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3px; left: 10.3px;"><textarea style="position: absolute; padding: 0px; width: 1px; height: 1em; outline: medium none; font-size: 4px;" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 0px; min-height: 12px; pointer-events: none;"><div style="height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 12px; pointer-events: none;"><div style="width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 58.4px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: medium none;"><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1; display: none;"><div class="CodeMirror-selected" style="position: absolute; left: 4px; top: 0px; width: 75.5px; height: 13px;"></div></div><div class="CodeMirror-code" style=""><pre><span class="cm-header cm-header2">##Factorial</span></pre><pre>&nbsp;</pre><pre>Here I have defined the factorial function</pre><pre>&nbsp;</pre></div><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 13px;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; top: 58.4px;"></div><div class="CodeMirror-gutters" style="display: none; height: 58.4px;"></div></div></div>
+            </div>
+        </div>
+        <div class="segment-footer"></div>
+    </div>
+</div>
+
+    <div data-bind="template: {name: renderTemplate}">
+    <div data-bind="css: {selected: active(), 'code-warning': warningIndicator() &amp;&amp; active(), running: runningIndicator}, attr: {id: id}" class="segment code" id="aa5a2d0d-f800-4082-aa03-3b8e2345f892">
+
+        <div class="segment-main">
+            <textarea data-bind="codemirror: content" class="codeTextArea mousetrap" style="display: none;"></textarea><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 27.4px; left: 46.1px;"><textarea style="position: absolute; padding: 0px; width: 1px; height: 1em; outline: medium none; font-size: 4px;" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 0px; min-height: 12px; pointer-events: none;"><div style="height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 12px; pointer-events: none;"><div style="width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 66.5px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: medium none;"><div class="CodeMirror-measure"><div style="width: 50px; height: 50px; overflow-x: scroll;"></div></div><div style="position: relative; z-index: 1; display: none;"><div class="CodeMirror-selected" style="position: absolute; left: 4px; top: 0px; width: 70.1667px; height: 11.85px;"></div></div><div class="CodeMirror-code" style=""><pre><span class="cm-bracket">(</span><span class="cm-keyword">defn</span> factorial <span class="cm-bracket">[</span>x<span class="cm-bracket">]</span> </pre><pre>  <span class="cm-bracket">(</span><span class="cm-keyword">if</span> <span class="cm-bracket">(</span><span class="cm-builtin">=</span> x <span class="cm-number">0</span><span class="cm-bracket">)</span> </pre><pre>    <span class="cm-number">1</span> </pre><pre>   <span class="cm-bracket">(</span><span class="cm-builtin">*</span> x <span class="cm-bracket">(</span>factorial <span class="cm-bracket">(</span><span class="cm-builtin">-</span> x <span class="cm-number">1</span><span class="cm-bracket">)))</span> </pre><pre><span class="cm-bracket">))</span>   </pre></div><div class="CodeMirror-cursor" style="left: 46.1px; top: 23.4px; height: 11.85px; visibility: hidden;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none; visibility: hidden;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; top: 66.5px;"></div><div class="CodeMirror-gutters" style="display: none; height: 67px;"></div></div></div>
+        </div>
+        <div data-bind="text: errorText, visible: errorText() !== ''" class="error-text" style="display: none;"></div>
+        <div data-bind="visible: consoleText() !== ''" class="console-text" style="display: none;">
+            <pre><code data-bind="html: consoleText"></code></pre>
+        </div>
+        <div data-bind="visible: (output() != ''), outputViewer: output, segmentID: id, css: {'browser-muted': warningIndicator}" class="output" style=""><pre id="f71bcbde-f3b8-4e8c-a2f7-15141e0ae090" class=" cm-s-default">#<span class="cm-atom">'</span>user/factorial</pre></div>
+        <div class="segment-footer"></div>
+    </div>
+</div>
+
+    <div data-bind="template: {name: renderTemplate}">
+    <div data-bind="css: {selected: active()}, attr: {id: id}, click: handleClick" class="segment free" id="0c2bff95-72ae-412a-8633-690bc1744244">
+        <div class="segment-main">
+            <div data-bind="mathJaxViewer: renderedContent, visible: !markupVisible()" class="free-preview" id="mathjax-viewer-78c8d8c1-a0c2-4c66-8b17-fde05eaffb88" style=""><p>Some evaluations.</p></div>
+            <div data-bind="visible: markupVisible" class="free-markup" style="display: none;">
+                <textarea data-bind="codemirror: content" style="display: none;"></textarea><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3px; left: 138.667px;"><textarea style="position: absolute; padding: 0px; width: 1px; height: 1em; outline: medium none; font-size: 4px;" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 0px; min-height: 12px; pointer-events: none;"><div style="height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 12px; pointer-events: none;"><div style="width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 20.6px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: medium none;"><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1; display: none;"></div><div class="CodeMirror-code" style=""><pre>Some evaluations.</pre></div><div class="CodeMirror-cursor" style="left: 132.367px; top: 0px; height: 13px; visibility: hidden;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none; visibility: hidden;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; top: 20.6px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div>
+            </div>
+        </div>
+        <div class="segment-footer"></div>
+    </div>
+</div>
+
+    <div data-bind="template: {name: renderTemplate}">
+    <div data-bind="css: {selected: active(), 'code-warning': warningIndicator() &amp;&amp; active(), running: runningIndicator}, attr: {id: id}" class="segment code" id="bbd7933b-edb0-4cc5-95b1-ef0eed1464f3">
+
+        <div class="segment-main">
+            <textarea data-bind="codemirror: content" class="codeTextArea mousetrap" style="display: none;"></textarea><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 95.2167px;"><textarea style="position: absolute; padding: 0px; width: 1px; height: 1em; outline: medium none; font-size: 4px;" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 0px; min-height: 12px; pointer-events: none;"><div style="height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 12px; pointer-events: none;"><div style="width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 19.7px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: medium none;"><div class="CodeMirror-measure"><div style="width: 50px; height: 50px; overflow-x: scroll;"></div></div><div style="position: relative; z-index: 1; display: none;"><div class="CodeMirror-selected" style="position: absolute; left: 81.1833px; top: 0px; width: 14.0333px; height: 11.85px;"></div></div><div class="CodeMirror-code" style=""><pre><span class="cm-bracket">(</span>factorial <span class="cm-number">5</span><span class="cm-bracket">)</span></pre></div><div class="CodeMirror-cursor" style="left: 95.2167px; top: 0px; height: 11.85px;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; top: 19.7px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div>
+        </div>
+        <div data-bind="text: errorText, visible: errorText() !== ''" class="error-text" style="display: none;"></div>
+        <div data-bind="visible: consoleText() !== ''" class="console-text" style="display: none;">
+            <pre><code data-bind="html: consoleText"></code></pre>
+        </div>
+        <div data-bind="visible: (output() != ''), outputViewer: output, segmentID: id, css: {'browser-muted': warningIndicator}" class="output" style=""><pre id="2c358941-5a54-4014-9a0a-0ad53ccf0bec" class=" cm-s-default"><span class="cm-number">120</span></pre></div>
+        <div class="segment-footer"></div>
+    </div>
+</div>
+
+    <div data-bind="template: {name: renderTemplate}">
+    <div data-bind="css: {selected: active(), 'code-warning': warningIndicator() &amp;&amp; active(), running: runningIndicator}, attr: {id: id}" class="segment code" id="71418324-15c3-4d9c-a80c-f53c9e3471ae">
+
+        <div class="segment-main">
+            <textarea data-bind="codemirror: content" class="codeTextArea mousetrap" style="display: none;"></textarea><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 67.15px;"><textarea style="position: absolute; padding: 0px; width: 1px; height: 1em; outline: medium none; font-size: 4px;" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 0px; min-height: 12px; pointer-events: none;"><div style="height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 12px; pointer-events: none;"><div style="width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 19.7px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: medium none;"><div class="CodeMirror-measure"><div style="width: 50px; height: 50px; overflow-x: scroll;"></div></div><div style="position: relative; z-index: 1; display: none;"><div class="CodeMirror-selected" style="position: absolute; left: 81.1833px; top: 0px; width: 14.0333px; height: 11.85px;"></div></div><div class="CodeMirror-code" style=""><pre><span class="cm-bracket">(</span>factorial <span class="cm-number">20</span><span class="cm-bracket">)</span></pre></div><div class="CodeMirror-cursor" style="left: 67.15px; top: 0px; height: 11.85px; visibility: hidden;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none; visibility: hidden;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; top: 19.7px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div>
+        </div>
+        <div data-bind="text: errorText, visible: errorText() !== ''" class="error-text" style="display: none;"></div>
+        <div data-bind="visible: consoleText() !== ''" class="console-text" style="display: none;">
+            <pre><code data-bind="html: consoleText"></code></pre>
+        </div>
+        <div data-bind="visible: (output() != ''), outputViewer: output, segmentID: id, css: {'browser-muted': warningIndicator}" class="output" style=""><pre id="dcb19560-e715-4e45-a02b-f7ef3a8434fb" class=" cm-s-default"><span class="cm-number">2432902008176640000</span></pre></div>
+        <div class="segment-footer"></div>
+    </div>
+</div>
+</div>
+        </div>
+    </div>
+</div>
+<div class="scroll-pad"></div>
+
+<!-- Templates -->
+<script id="segment-template" type="text/html">
+    &lt;div data-bind="template: {name: renderTemplate}"&gt;&lt;/div&gt;
+</script>
+
+<script id="code-segment-template" type="text/html">
+    &lt;div class="segment code running"
+         data-bind="css: {selected: active(), 'code-warning': warningIndicator() &amp;&amp; active(), running: runningIndicator}, attr: {id: id}"&gt;
+
+        &lt;div class="segment-main"&gt;
+            &lt;textarea class="codeTextArea mousetrap" data-bind="codemirror: content"&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+        &lt;div class="error-text" data-bind="text: errorText, visible: errorText() !== ''"&gt;&lt;/div&gt;
+        &lt;div class="console-text" data-bind="visible: consoleText() !== ''"&gt;
+            &lt;pre&gt;&lt;code data-bind="html: consoleText"&gt;&lt;/code&gt;&lt;/pre&gt;
+        &lt;/div&gt;
+        &lt;div class="output"
+             data-bind="visible: (output() != ''), outputViewer: output, segmentID: id, css: {'browser-muted': warningIndicator}"&gt;
+            &lt;/div&gt;
+        &lt;div class="segment-footer"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+</script>
+
+<script id="free-segment-template" type="text/html">
+    &lt;div class="segment free" data-bind="css: {selected: active()}, attr: {id: id}, click: handleClick"&gt;
+        &lt;div class="segment-main"&gt;
+            &lt;div class="free-preview" data-bind="mathJaxViewer: renderedContent, visible: !markupVisible()"&gt;&lt;/div&gt;
+            &lt;div class="free-markup" data-bind="visible: markupVisible"&gt;
+                &lt;textarea data-bind="codemirror: content"&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="segment-footer"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+</script>
+
+<!-- Dialogs -->
+
+
+
+</body></html>
