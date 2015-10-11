@@ -1,17 +1,31 @@
 <script>
-var n =0;
-function func(){
-  //var arr = [ "(?_?)", "( ?_?)>?■-■" ," (?■_■)" ]
 
-  var arr = [ "hello", "to" ,"you!" ]
+var n =0;
+
+function func(){
+
+  var arr = [ "(•_•)", "(-•_•)>⌐■-■" ,"(⌐■_■)" ]
+
+  // var arr = [ "hello", "to" ,"you!" ]
+
   
-  window.history.pushState({}, "Title", arr[ n % 2]);
-  n+1;
+
+  window.history.pushState({}, "Title", arr[ n % 3]);
+
+  n = n+1;
+
   setTimeout(func, 1000);
+
 }
+
 </script>
 
+
+
 <body onload="func()">
+
+
+
 
 
 </body>
