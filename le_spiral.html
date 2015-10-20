@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Le Spiral</title>
+<style> 
+html { margin:0; padding:0; } 
+body { margin:0; padding:0; overflow:hidden} 
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+//no globals
+$(document).ready(function(){
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext("2d");
+        var myWidth = $(window).width();
+        var myHeight = $(window).height();
+
+
+        $( window ).resize(function() {
+            
+           var myWidth =  $(window).width();
+           var myHeight = $(window).height();
+
+           f(myWidth,myHeight,context,canvas);
+        });
+
+        f(myWidth,myHeight,context,canvas);
+        var myWidth =  $(window).width();
+        var myHeight = $(window).height();
+        f(myWidth,myHeight,context,canvas);
+});
+
+// width height canvas
+function f(myWidth,myHeight,context,canvas){
+
+        canvas.width=myWidth;
+        canvas.height=myHeight;
+        
+        context.clearRect(0, 0, myWidth, myHeight);
+
+        var offsetxratio=0.5;
+        var offsetyratio=0.5;
+        var offsetx=offsetxratio*myWidth;
+        var offsety=offsetyratio*myHeight;
+
+        
+
+        context.beginPath();
+        context.moveTo(offsetx,offsety);
+        context.lineTo(offsetx,offsety);
+        context.stroke();
+
+        var i;
+        
+        // init i
+        //i = -1*(2*Math.PI);
+        i = 0;
+        for(i;i<(2*Math.PI);i+=0.005){
+          var myTheta = i;
+          
+          var x;var y;
+          
+          x = (myTheta/(2*Math.PI)) * Math.cos(myTheta*4);
+          y = (myTheta/(2*Math.PI)) * Math.sin(myTheta*4);
+          
+          // scale
+          x = x*(myWidth/(Math.PI));
+          y = y*(myHeight/2);
+          
+          
+          //apply offsets
+          x = offsetx + x;
+          y = offsety + y;
+          
+          // mirror y axis
+          y = myHeight - y
+          
+          context.lineTo(x,y);
+        }
+        context.stroke();
+}
+</script>
+</head>
+<body><canvas id="myCanvas" height="200" width="200" ></canvas></body>
+</html>
