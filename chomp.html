@@ -3,15 +3,19 @@
 <script>
 
 function func(){
-   document.getElementById("chomptext").text = "2";
+   var currentval = document.getElementById("chomptext").value;
+   currentval = currentval.replace(/\s*[\n\r]/g,"\r")
+   document.getElementById("chomptext").value = currentval;
 }
 
 </script>
 
-<textarea id="chomptext">
+<textarea id="chomptext" style="width:100%;height:50%">
 there is whitespace at the end of me      
 and here too      
 I need chomping                                                       
 </textarea>
 
-<input type="button" onclick="func()" value="Chomp IT!!!"</input>
+<br>
+
+<input style="width:100%" type="button" onclick="func()" value="Chomp IT!!!"</input>
