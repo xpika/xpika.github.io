@@ -4,7 +4,8 @@
 
 function func(){
    var currentval = document.getElementById("chomptext").value;
-   currentval = currentval.replace(/\s*[\n\r]/g,"\r")
+   currentval = currentval.replace(/\s*[\n\r]/g,"\r");
+   currentval = currentval.replace(/\s*$/,"");
    document.getElementById("chomptext").value = currentval;
 }
 
