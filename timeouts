@@ -1,0 +1,32 @@
+
+<b>How browser timeouts really work<b>
+
+<br>
+
+Timeout <input type="number"  id="timeout" value="1000"/>
+
+<button onclick="start()">Start</button>
+
+<button onclick="stop()">Stop</button>
+<br>
+counter: <input type="number" id="counter" value="0">
+
+<script>
+
+var interval;
+
+function start(){
+       var timeout = document.getElementById("timeout").value;
+         var counter_elem = document.getElementById("counter");
+        counter_elem.value= 0;
+	interval = setInterval(function incCounter(){
+          counter_elem.value = (counter_elem.value*1)+1;          
+        },timeout)
+;
+}
+
+function stop(){
+ clearInterval(interval);  
+}
+
+</script>
