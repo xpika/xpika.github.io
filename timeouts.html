@@ -1,32 +1,53 @@
-
 <b>Play with timeouts utilizing setinterval<b>
 
 <br>
 
-Timeout <input type="number"  id="timeout" value="1000"/>
+Timeout <input type="number" autocomplete=off  id="timeout" value="1000"/>
 
 <button onclick="start()">Start</button>
 
 <button onclick="stop()">Stop</button>
 <br>
-counter: <input type="number" id="counter" value="0">
+counter: <input type="number" id="counter" autocomplete=off value="0">
 
 <script>
-
 var interval;
-
 function start(){
        var timeout = document.getElementById("timeout").value;
          var counter_elem = document.getElementById("counter");
         counter_elem.value= 0;
-	interval = setInterval(function incCounter(){
+	interval = new setIntervalAlternative(function incCounter(){
           counter_elem.value = (counter_elem.value*1)+1;          
         },timeout)
 ;
 }
-
 function stop(){
- clearInterval(interval);  
+ clearIntervalAlternate(interval);
 }
+
+
+function setIntervalAlternative(func,timeout){ 
+
+  var _this = this;
+
+  var newfunc = function(){ 
+    setIntervalAlternative.call(_this,func,timeout);   
+    func();   
+  }
+  
+  this.handle = setTimeout(newfunc,timeout);
+  
+  
+  return this.handle;
+}
+
+function clearIntervalAlternate(interval){
+
+    clearTimeout(interval.handle);
+
+}
+
+
+
 
 </script>
