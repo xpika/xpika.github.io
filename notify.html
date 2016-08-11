@@ -1,6 +1,13 @@
                                                                                                                                                            
 <script>
 
+var strings = ["These","are","the","notifications","that","never","end","yes","they","go","on","and","on","my","friend.","Somebody,","started","loading","them","not","knowing","what","they","were","but","they'll","continue","Loading","them","forever","just","because"]
+var i =0;
+function f(){
+  notify(strings[i%strings.length]);
+}
+
+
 if (Notification.permission !== "granted"){
     document.write("<br><br><br><br><br><br><br><br>Allow notifications ^^");
     Notification.requestPermission();
@@ -26,11 +33,6 @@ function notify(str) {
         f();
     };
    
-}
-var strings = ["These","are","the","notifications","that","never","end","yes","they","go","on","and","on","my","friend.","Somebody,","started","loading","them","not","knowing","what","they","were","but","they'll","continue","Loading","them","forever","just","because"]
-var i =0;
-function f(){
-  notify(strings[i%strings.length]);
 }
 
 </script>
