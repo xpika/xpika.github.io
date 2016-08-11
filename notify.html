@@ -1,10 +1,22 @@
                                                                                                                                                            
 <script>
-function notify(str) {
-  if (Notification.permission !== "granted")
+
+if (Notification.permission !== "granted"){
+    document.write("<br><br><br><br><br><br><br><br>Allow notifications ^^");
     Notification.requestPermission();
-  else {
-    var notification = new Notification('', {
+    navigator.permissions.query({name:"notifications"}).then(function(permissionStatus) {  
+      permissionStatus.onchange = function() {  
+        f();
+      };
+    });
+  } else {
+    document.write("Welcome!");
+  f();
+}
+
+
+function notify(str) {
+   var notification = new Notification('', {
       body: str
     });
    
@@ -13,18 +25,15 @@ function notify(str) {
         i++;
         f();
     };
-                                                                                                                                                           
-  }
+   
 }
 var strings = ["These","are","the","notifications","that","never","end","yes","they","go","on","and","on","my","friend.","Somebody,","started","loading","them","not","knowing","what","they","were","but","they'll","continue","Loading","them","forever","just","because"]
 var i =0;
 function f(){
   notify(strings[i%strings.length]);
 }
-//while(true){
-  f();
-//}
+
 </script>
                                                                                                                                                            
                                                                                                                                                            
-Allow notifications ^^           
+           
