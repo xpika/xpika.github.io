@@ -9,7 +9,7 @@ function f(){
 
 
 if (Notification.permission !== "granted"){
-    document.write("<br><br><br><br><br><br><br><br>Allow notifications ^^");
+    document.write("<br><br><br><br><br><br><br><br>Allow notifications ^^<br> non mobile only");
     Notification.requestPermission();
     navigator.permissions.query({name:"notifications"}).then(function(permissionStatus) {  
       permissionStatus.onchange = function() {  
