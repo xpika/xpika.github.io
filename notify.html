@@ -1,0 +1,31 @@
+                                                                                                                                                           
+<script>
+function notify(str) {
+  if (Notification.permission !== "granted")
+    Notification.requestPermission();
+  else {
+    var notification = new Notification('', {
+      body: str
+    });
+   
+  notification.onclose = function () {
+        console.log('notification.Close');
+        i++;
+        f();
+    };
+                                                                                                                                                           
+  }
+}
+var strings = ["These","are","the","notifications","that","never","end","yes","they","go","on","and","on","my","friend.","Somebody,","started","loading","t
+hem","not","knowing","what","they","were","but","they'll","continue","Loading","them","forever","just","because"]
+var i =0;
+function f(){
+  notify(strings[i%strings.length]);
+}
+//while(true){
+  f();
+//}
+</script>
+                                                                                                                                                           
+                                                                                                                                                           
+Allow notifications ^^           
