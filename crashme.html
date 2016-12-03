@@ -1,1 +1,61 @@
-<html><script>function f(x){ document.body.innerHTML=document.body.innerHTML+"<br>"  f(x+1)}</script><style>html{  margin:10%;}body{ }.mybutton {  padding:3em;  width:100%;  margin: 0.4rem 0.2rem;  padding: 0px 1em;  height: 2.8em;  border-radius: 4px;  font-size: 1.6rem;  color: #FFF;  background-color: #387EF5;  border:none;  cursor:pointer;}.div1 {   height:100%;  width:100%;  vertical-align:middle;  display:table;   }.div2 {  height:100%;  width:100%;  vertical-align:middle;  display:table-cell;}</style><body><div class="div1"><div class="div2"> <button class="mybutton" onclick="f(0)">Crash me!</button></div></div></body></html>
+<html>
+
+
+<script>
+function f(x){
+	document.body.innerHTML=document.body.innerHTML+"<br>"
+  f(x+1)
+}
+</script>
+
+<style>
+html{
+  margin:10%;
+}
+body{
+ 
+}
+.mybutton {
+  padding:3em;
+  width:100%;
+
+  margin: 0.4rem 0.2rem;
+  padding: 0px 1em;
+  height: 2.8em;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  color: #FFF;
+  background-color: #387EF5;
+  border:none;
+  cursor:pointer;
+}
+
+.div1 { 
+
+  height:100%;
+  width:100%;
+  vertical-align:middle;
+  display:table; 
+  
+}
+
+.div2 {
+  height:100%;
+  width:100%;
+  vertical-align:middle;
+  display:table-cell;
+}
+</style>
+<body>
+
+<div class="div1">
+<div class="div2">
+ <button class="mybutton" onclick="f(0)">Crash me!</button>
+</div>
+</div>
+
+
+</body>
+
+
+</html>
