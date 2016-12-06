@@ -1,10 +1,8 @@
-
 <!DOCTYPE html>
 <html>
 
 
 <script>
-
 pressed= false;
 function abort(){
 	document.getElementById("myButton").innerHTML = "Crash me";
@@ -12,29 +10,23 @@ function abort(){
         document.getElementById("message").innerHTML = "&nbsp;";
         document.getElementById("myButton").onclick = q;
         pressed=false;      
-
 }
 	
-
 q = function(){
 if(pressed==false){
-
 document.getElementById("myButton").innerHTML = "Abort";
 document.getElementById("myButton").onclick = abort;
 pressed=true
 counter = 10;
 myinterval = setInterval(function(){
+ document.getElementById("message").style.opacity = 1;
  document.getElementById("message").innerHTML = "...Crashing in "+(counter-1);
  counter--;
  if(counter==1){
 		  document.getElementById("message").innerHTML = "Crashed!";
  }
  if(counter==0){
-
-
-
-
-  f(0);
+  //f(0);
  } 
 }
 ,1000);
@@ -77,7 +69,6 @@ font-size:1.6em;
 .mybutton:hover {
   background-color: #5590f6;
 }
-
 </style>
 <body>
 
@@ -89,7 +80,7 @@ font-size:1.6em;
 </tr>
 <tr>
 <td style="text-align:center;vertical-align:top">
-  <span id="message">&nbsp;</span>
+  <span style="transition: all 1s ease;opacity:0" id="message">a</span>
 </td>
 </tr>
 </table>
