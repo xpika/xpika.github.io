@@ -9,9 +9,11 @@ function abort(){
         clearInterval(myinterval);
         document.getElementById("message").innerHTML = "&nbsp;";
         document.getElementById("myButton").onclick = q;
-        pressed=false;      
+        pressed=false;
+				document.getElementById("message").style.opacity = 0;
+
 }
-	
+
 q = function(){
 if(pressed==false){
 document.getElementById("myButton").innerHTML = "Abort";
@@ -26,26 +28,26 @@ myinterval = setInterval(function(){
 		  document.getElementById("message").innerHTML = "Crashed!";
  }
  if(counter==0){
-  //f(0);
- } 
+  f(0);
+ }
 }
 ,1000);
 }
 }
-	
+
 f = function(x){
-	
-  
-	
+
+
+
 	document.body.innerHTML=document.body.innerHTML+"<br>"
   f(x+1)
-   
+
 }
 </script>
 
 <style>
 html{
-  
+
   height:100%;
 }
 body{
@@ -63,9 +65,9 @@ font-size:1.6em;
   background-color: #387EF5;
   border:none;
   cursor:pointer;
-  transition: all 0.3s ease 0s;	
+  transition: all 0.3s ease 0s;
 }
-	
+
 .mybutton:hover {
   background-color: #5590f6;
 }
