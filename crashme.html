@@ -2,9 +2,40 @@
 
 
 <script>
+	
+pressed= false;
+function q(){
+
+if(pressed==false){
+
+pressed=true
+
+counter = 10;
+myinterval = setInterval(function(){
+ document.getElementById("message").innerHTML = "...Crashing in "+counter;
+ counter--;
+ if(counter==0){
+  clearInterval(myinterval);
+  f(0);
+ } 
+}
+,1000);
+
+
+}
+
+
+
+
+}
+	
 function f(x){
+	
+  document.getElementById("message").innerHTML = "Crashed!";
+	/*
 	document.body.innerHTML=document.body.innerHTML+"<br>"
   f(x+1)
+   */
 }
 </script>
 
@@ -12,14 +43,17 @@ function f(x){
 html{
   margin:10%;
 }
+
 body{
- 
 }
+
+
+
 .mybutton {
   width:100%;
+  font-size: 1.6em;
   height: 2.8em;
   border-radius: 4px;
-  font-size: 1.6rem;
   color: #FFF;
   background-color: #387EF5;
   border:none;
@@ -31,6 +65,9 @@ body{
   background-color: #5590f6;
 }
 
+.div11 {
+  display:table-row;
+}
 .div1 { 
 
   height:100%;
@@ -41,22 +78,38 @@ body{
 }
 
 .div2 {
-  height:100%;
+  height:50%;
   width:100%;
   vertical-align:middle;
   display:table-cell;
 }
+.div2b {
+  height:50%;
+  width:100%;
+  vertical-align:middle;
+  display:table-cell;
+}
+
 </style>
 <body>
 
-<div class="div1">
-<div class="div2">
- <button class="mybutton" onclick="f(0)">Crash me!</button>
-</div>
-</div>
+<table style="height:100%;width:100%" border="0">
+<tr>
+<td>
+ <button class="mybutton" onclick="q()">Crash me!</button>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:top">
+  <span id="message">&nbsp;</span>
+</td>
+</tr>
+</tr>
+</table>
 
 
 </body>
 
 
 </html>
+
