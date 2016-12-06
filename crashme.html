@@ -24,11 +24,15 @@ document.getElementById("myButton").onclick = abort;
 pressed=true
 counter = 10;
 myinterval = setInterval(function(){
- document.getElementById("message").innerHTML = "...Crashing in "+counter;
+ document.getElementById("message").innerHTML = "...Crashing in "+(counter-1);
  counter--;
+ if(counter==1){
+		  document.getElementById("message").innerHTML = "Crashed!";
+ }
  if(counter==0){
 
-  //abort();
+
+
 
   f(0);
  } 
@@ -39,7 +43,7 @@ myinterval = setInterval(function(){
 	
 f = function(x){
 	
-  document.getElementById("message").innerHTML = "Crashed!";
+  
 	
 	document.body.innerHTML=document.body.innerHTML+"<br>"
   f(x+1)
