@@ -1,36 +1,44 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <style>
 html {
-	height:100%;
-	margin:0;
-	padding:0;
+        height:100%;
+        margin:0;
+        padding:0;
 }
 body{
-	height:100%;
-	margin:0;
-	padding:0;
+        height:100%;
+        margin:0;
+        padding:0;
 }
 #wow  {
-    animation: wow 0.3s ease-out infinite normal;
-    font-size:30vmin;
-    text-align: center;   
+    animation: wow 0.5s linear infinite normal;
+    font-size:40vmin;
+    text-align: center;
     color:red;
-	margin:0;
-	padding:0;
-	
+        margin:0;
+        padding:0;
+
 
  }
 
 @keyframes wow {
-	0% { 
- 		transform: scale(0);
-	}
-	100% { 
- 		transform: scale(1);
-	}
+        0% {
+                transform:  rotate(180deg) scale(0);
+        }
+        25% {
+                transform: rotate(270deg) scale(0.5);
+        }
+        50% {
+                transform:  rotate(360deg) scale(1);
+        }
+        75% {
+                transform: rotate(450deg) scale(0.5);
+        }
+        100% {
+                transform: rotate(540deg) scale(0);
+        }
 
 }
 
@@ -40,7 +48,7 @@ body{
 <body>
 <table style="height:100%;width:100%">
 <tr><td style="height:100%;margin:0;padding:0;">
-<div id="wow">WOW!!</div>
+<div id="wow">WOW</div>
 </td></tr>
 </table>
 </body>
