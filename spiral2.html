@@ -4,8 +4,17 @@
 <title>Le Spiral</title>
 <style> 
 html { margin:0; padding:0; } 
-body { margin:0; padding:0;} 
+body { margin:0; padding:0;
 
+
+
+
+}
+
+body {
+
+ color:gray;
+} 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
@@ -21,7 +30,6 @@ $(document).ready(function(){
      subadd();
 });
     
-
 theGlobal = 2*Math.PI;
     
 function subadd(){
@@ -31,38 +39,34 @@ function subadd(){
     
         var myWidth =  $(window).width();
         var myHeight = $(window).height();
+     
+
+        
+        
   
         var g= $( document ).height();
         var fac = ((($( window ).scrollTop() % g)+(g/10))/g);
 		
-
         f(myWidth,myHeight,context,canvas,theGlobal * fac );
     
 }
     
     
-
-
 // width height canvas
 function f(myWidth,myHeight,context,canvas,glob){
-
         canvas.width=myWidth;
         canvas.height=myHeight;
         
         context.clearRect(0, 0, myWidth, myHeight);
-
         var offsetxratio=0.5;
         var offsetyratio=0.5;
         var offsetx=offsetxratio*myWidth;
         var offsety=offsetyratio*myHeight;
-
         
-
         context.beginPath();
         context.moveTo(offsetx,offsety);
         context.lineTo(offsetx,offsety);
         context.stroke();
-
         var i;
         
         // init i
@@ -73,12 +77,22 @@ function f(myWidth,myHeight,context,canvas,glob){
           
           var x;var y;
           
-          x = (myTheta/(2*Math.PI)) * Math.cos(myTheta*4);
-          y = (myTheta/(2*Math.PI)) * Math.sin(myTheta*4);
+          x = (myTheta/(2*Math.PI)) * Math.cos(myTheta*5);
+          y = (myTheta/(2*Math.PI)) * Math.sin(myTheta*5);
+
+
+           var mySide;
+           if(myWidth < myHeight) {
+             mySide = myWidth;
+           } else {
+             mySide = myHeight;
+           }
           
+	  var factorToMakeSpiralFitOnPage = 0.5;	
+		
           // scale
-          x = x*(myWidth/(Math.PI));
-          y = y*(myHeight/2);
+          x = x*(mySide*factorToMakeSpiralFitOnPage);
+          y = y*(mySide*factorToMakeSpiralFitOnPage);
           
           
           //apply offsets
@@ -93,7 +107,6 @@ function f(myWidth,myHeight,context,canvas,glob){
         context.stroke();
 }
     
-
 function blah(){
     theGlobal = theGlobal / 2;
     subadd();
