@@ -1,13 +1,15 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>Le Spiral</title>
+<title>Golden Spiral</title>
 <style> 
 html { margin:0; padding:0; } 
 body { margin:0; padding:0;
 }
 body {
- color:lightgray;
+ color:Gold;
 } 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -65,17 +67,19 @@ function f(myWidth,myHeight,context,canvas,glob){
         // init i
         //i = -1*(2*Math.PI);
         i = 0;
-        for(i;i<glob;i+=0.001){
+        for(i;i<(0.943*6*glob);i+=0.001){
           var myTheta = i;
           
           var x;var y;
 
-          var spin_factor = 4;
+          var spin_factor = 2;
 
 	  var length_of_a_circle_in_radians = 2*Math.PI;
           w = myTheta;
-          x =  w * Math.cos(myTheta*spin_factor);
-          y =  w * Math.sin(myTheta*spin_factor);
+          e= 1.002
+          phi = 1.68003
+          x =   (Math.pow(phi,w) * Math.cos(myTheta*spin_factor));
+          y =  Math.pow(phi,w) * Math.sin(myTheta*spin_factor);
            
            var mySide;
            if(myWidth < myHeight) {
@@ -84,7 +88,8 @@ function f(myWidth,myHeight,context,canvas,glob){
              mySide = myHeight;
            }
           
-	  var factorToMakeSpiralFitOnPage = 1/15;	
+	  var factorToMakeSpiralFitOnPage = 1/1000005;	
+
 		
           // scale
           x = x*(mySide*factorToMakeSpiralFitOnPage);
@@ -130,3 +135,4 @@ function blah(){
 
     </body>
 </html>
+
