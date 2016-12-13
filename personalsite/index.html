@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html>
-   <head>
-      <title>XY30</title>
+<html style="
+    height: 100%;
+    display: table;
+    width:100%;
+"><head>
+      <title>xy30</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-      <script>
+      <script async="" src="https://www.google-analytics.com/analytics.js"></script><script>
          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -27,6 +29,8 @@
 	 body {
              /* center the main content */                
 	     text-align: center;
+             display:table-cell;
+             vertical-align:middle;
 	 }
 
          a { 
@@ -39,20 +43,21 @@
 	     display: inline-block;
 
              /* put a limit on the width of the site */  
-	     max-width: 704px;
+	     max-width: 70em;
              /* put whitepace around the main section so that it will never hit the edge  */  
-	     padding: 2em;
+	     padding: 3em;
              /* correct the text alignment */
-             text-align:left;
+             text-align:center;
 	 }
          .grid {
            overflow: auto;
+		    display:inline-block;
          }
          .grid-item {
            /* make the items float */
-           float:left;
-           
-         /* put some white space between each item */
+           display:inline-block;
+           width:9em;
+         
            padding:1em;
          } 
 
@@ -64,15 +69,23 @@
             white-space:nowrap;
             background-color: white;
             border: 1px solid black;
+			border-radius: 10px;
+			text-align:center;
          
 	 }
 	
       </style>
    </head>
    <body>
-      <div class="mainsection">
-         <div style="font-size:200%;">XY30</div>
-         <div >
+      <div class="mainsection" style="background-color:#EEE">
+         
+         
+        
+            <div class="grid">
+
+
+<div style="/* display:inline-block; */text-align:left;padding-left: 5em;padding-right: 5em;">
+            <h1>xy30</h1>
             <p>
                Welcome to the homepage of Alan Hawkins.
             </p>
@@ -83,8 +96,9 @@
                xy30 is a fairly short domain name I found.
             </p>
          </div>
-    
-            <div class="grid">
+          <br>
+
+
                <div class="grid-item"><a href="https://docs.google.com/document/d/1JKintflc6PKhKrqJEYUPAiuu_bw_PCMVIlyvwQGfjLI/edit?usp=sharing">Résumé</a>
                </div>
                <div class="grid-item"><a href="http://github.com/xpika">Github</a></div>
@@ -99,5 +113,5 @@
             </div>
   
       </div>
-   </body>
-</html>
+   
+</body></html>
