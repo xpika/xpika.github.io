@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html>
    <head>
@@ -28,6 +29,12 @@
          /* Apparently, this is a common and good font*/
          font-family: Helvetica;
          font-size: 16px;
+         /*
+background: radial-gradient(ellipse farthest-corner at 0px 0px , #b5baf1 0%, #b8efcc 100%);
+*/
+
+
+
          }
          body {
          /* set this to center to center the page */                
@@ -66,10 +73,14 @@
          display:inline-block;
          text-decoration: none;
          white-space:nowrap;
-         background-color: white;
+         /* background-color: white; */
          border: 1px solid black;
          /* border-radius: 10px; */
          text-align:center;
+         }
+
+         .grid-item a:hover {
+              background-color: rgba(255,255,255,1);
          }
 
          .para {
@@ -78,12 +89,14 @@
            padding-right: 1em;
          }
          .heading {
+           color:black;
            margin:0;
            padding:0;
            line-height:1;
+           font-size:4em;
          }
          .texts {
-           background-color:white
+           /* background-color:white */
          }
       </style>
    </head>
@@ -91,18 +104,26 @@
       <div class="mainsection">
          <div class="para">
             <h1 class="heading">xy30</h1>
+            <br>
             <div class="texts">
             <p>
                Welcome to the homepage of Alan Hawkins.
             </p>
-            <p>
-               <i>What does xy30 mean?</i>
-            </p>
+         
+            <h3>Frequently Asked Questions</h3>
+           
+           
+            <h4>What does xy30 mean?</h4>
+           
             <p>
                xy30 is a fairly short domain name I found.
             </p>
+
             </div>
-         </div>
+            <br>
+         <hr style="border: none; border-bottom: 1px solid black;">
+         <br>
+         <h3>Portal</h3>
          <div class="grid" style="text-align:left">
             <div class="grid-item"><a href="https://docs.google.com/document/d/1JKintflc6PKhKrqJEYUPAiuu_bw_PCMVIlyvwQGfjLI/edit?usp=sharing">Résumé</a>
             </div>
@@ -116,6 +137,10 @@
             <div class="grid-item"><a href="https://hub.docker.com/u/xpika/">Dockerhub</a></div>
             <div class="grid-item"><a href="https://reddit.com/u/xpika2">Reddit</a></div>
          </div>
+            
+         </div>
+         
+       
       </div>
    </body>
 </html>
