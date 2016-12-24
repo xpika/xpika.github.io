@@ -49,17 +49,27 @@ background: radial-gradient(ellipse farthest-corner at 0px 0px , #b5baf1 0%, #b8
          /* Remove browser link highlighting */
          color:black; 
          }
+         
+
+         @media (min-width: 768px) { 
+           .mainsection {
+            margin:3em;
+           }
+         }
+ 
          .mainsection {
          display:inline-block;
+         margin-top:3em;
          max-width: 70em;
          padding: 0em 1em 2em 1em; 
-         margin:3em;
+        
          /* background-color:#ddd; */
          }
          .grid {
          overflow: auto;
          display:inline-block;
          display:flex;
+         /* font-family:georgia; */
          flex-wrap:wrap;
          }
          .grid-item {
@@ -69,6 +79,8 @@ background: radial-gradient(ellipse farthest-corner at 0px 0px , #b5baf1 0%, #b8
          text-align:center;
          box-sizing:border-box;
          } 
+
+
 
  
 
@@ -88,7 +100,8 @@ background: radial-gradient(ellipse farthest-corner at 0px 0px , #b5baf1 0%, #b8
          }
 
          .grid-item a:hover {
-              background-color: lightgray;
+              background-color: #0044ff;
+              color:white;
          }
 
          .para {
@@ -147,11 +160,11 @@ background: radial-gradient(ellipse farthest-corner at 0px 0px , #b5baf1 0%, #b8
 
 <br>
       
-      <div style="border-radius:10px;display:table;width:100%;background:lightgray;color:black">
+      <div style="border-radius:10px;display:table;width:100%;background:#0044ff;color:white">
       <div style="height:22vmin;display:table-cell;vertical-align:middle;padding:1em;box-sizing:border-box"><br>
   <h1 class="heading" style="margin-left:auto;margin-right:auto;padding:0;">Hello</h1>
 <br>
- <h3 style="margin:0;padding:0">Welcome to the homepage of Alan Hawkins.</h3> 
+ <h3 style="margin:0;padding:0;">Welcome to the homepage of Alan Hawkins.</h3> 
 </div>
 
        </div>
@@ -174,19 +187,19 @@ background: radial-gradient(ellipse farthest-corner at 0px 0px , #b5baf1 0%, #b8
 
 <h3>Portal</h3>
          <div class="grid" style="text-align:left">
-            <div class="grid-item col-lg-2 col-md-3 col-sm-4 col-xs-12"><a href="https://docs.google.com/document/d/1JKintflc6PKhKrqJEYUPAiuu_bw_PCMVIlyvwQGfjLI/edit?usp=sharing">Résumé</a>
+            <div class="grid-item col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="https://docs.google.com/document/d/1JKintflc6PKhKrqJEYUPAiuu_bw_PCMVIlyvwQGfjLI/edit?usp=sharing">Résumé</a>
             </div>
-            <div class="grid-item col-lg-2 col-md-3 col-sm-4 col-xs-12"><a href="http://github.com/xpika">Github</a></div>
-            <div class="grid-item col-lg-2 col-md-3 col-sm-4 col-xs-12"><a href="http://twitter.com/xy30">Twitter</a></div>
-            <div class="grid-item col-lg-2 col-md-3 col-sm-4 col-xs-12"><a href="http://instagram.com/metapik">Instagram</a></div>
-            <div class="grid-item col-lg-2 col-md-3 col-sm-4 col-xs-12"><a href="http://codekinder.com/wordpress">Blog</a></div>
-            <div class="grid-item col-lg-2 col-md-3 col-sm-4 col-xs-12"><a href="http://youtube.com/mrhankeythexmaspoo">Youtube</a></div>
-            <div class="grid-item col-lg-2 col-md-3 col-sm-4 col-xs-12"><a href="http://xy30.com/portfolio">Portfolio</a></div>
-            <div class="grid-item col-lg-2 col-md-3 col-sm-4 col-xs-12"><a href="http://stackoverflow.com/users/536342/pikapika">Stack Overflow</a></div>
-            <div class="grid-item col-lg-2 col-md-3 col-sm-4 col-xs-12"><a href="https://hub.docker.com/u/xpika/">Dockerhub</a></div>
-            <div class="grid-item col-lg-2 col-md-3 col-sm-4 col-xs-12"><a href="https://reddit.com/u/xpika2">Reddit</a></div>
-            <div class="grid-item col-lg-2 col-md-3 col-sm-4 col-xs-12"><a href="https://plus.google.com/+alanhawkins0">Google Plus</a></div>
-            <div class="grid-item col-lg-2 col-md-3 col-sm-4 col-xs-12"><a href="https://facebook.com/hawk.alan">Facebook</a></div>
+            <div class="grid-item col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://github.com/xpika">Github</a></div>
+            <div class="grid-item col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://twitter.com/xy30">Twitter</a></div>
+            <div class="grid-item col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://instagram.com/metapik">Instagram</a></div>
+            <div class="grid-item col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://codekinder.com/wordpress">Blog</a></div>
+            <div class="grid-item col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://youtube.com/mrhankeythexmaspoo">Youtube</a></div>
+            <div class="grid-item col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://xy30.com/portfolio">Portfolio</a></div>
+            <div class="grid-item col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://stackoverflow.com/users/536342/pikapika">Stack Overflow</a></div>
+            <div class="grid-item col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="https://hub.docker.com/u/xpika/">Dockerhub</a></div> 
+            <div class="grid-item col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="https://reddit.com/u/xpika2">Reddit</a></div>
+            <div class="grid-item col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="https://plus.google.com/+alanhawkins0">Google Plus</a></div>
+            <div class="grid-item col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="https://facebook.com/hawk.alan">Facebook</a></div>
          </div>
                 
         
