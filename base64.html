@@ -1,5 +1,8 @@
+
 <html>
-  <button onclick="document.getElementById('input1').value = document.getElementById('input2').value"> convert  </button>
+  <button onclick="document.getElementById('input2').value = btoa(document.getElementById('input1').value)"> encode </button>
+
+ <button onclick="document.getElementById('input2').value = atob(document.getElementById('input1').value)"> decode </button>
 <p>
 input <br>
 <textarea id="input1"></textarea>
