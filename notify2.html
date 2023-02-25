@@ -1,0 +1,15 @@
+<script src="
+https://cdn.jsdelivr.net/npm/push.js@1.0.12/bin/push.min.js
+"></script>
+
+<script>
+Push.create("Hello world!", {
+    body: "How's it hangin'?",
+    icon: '/icon.png',
+    timeout: 4000,
+    onClick: function () {
+        window.focus();
+        this.close();
+    }
+});
+</script>
