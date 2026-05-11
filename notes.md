@@ -1,3 +1,5 @@
+=SUM(OFFSET(twenty25,0,COLUMN(O1)-1,ROWS(twenty25),1))
+
 setInterval vs setTimeout
 
 setInterval is setTimeout for multiple times. It also ensures proper time durations between events.
